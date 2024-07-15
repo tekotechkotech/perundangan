@@ -10,29 +10,30 @@
       <table style="border-radius: 10px" class=" table table-hover border" >
         <thead >
           <tr >
-            <th scope="col">KODE</th>
+            <th scope="col">#</th>
             <th scope="col">Tanggal</th>
             <th scope="col">Nama Pemesan</th>
-            <th scope="col">Pemesanan</th>
-            <th scope="col">Total Harga</th>
+            <th scope="col">Harga Satuan</th>
+            <th scope="col">Stok</th>
             <th scope="col"></th>
             
           </tr>
         </thead>
         <tbody>
           @foreach ($a as $item)
-          <tr>
-            <th scope="row">{{ $item->kode_pemesanan }}</th>
-            <td>{{ \Carbon\Carbon::parse($item->tanggal_pemesanan)->translatedFormat('l, d F Y') }}</td>
-            <td>{{ $item->user }}</td>
+          <tr class="">
+            <th scope="row">
+              
+              {{ $loop->iteration }}
+            </th>
             <td>
-              @foreach ($item->detail as $itu)
-              <span class="badge badge-pill badge-primary">
-                {{ $itu['barang'] }} - Qty: {{ $itu['qty'] }}
-              </span>
-              @endforeach
+              <div href="#" class="btn  p-0 m-0 px-2 text-{{ $item->text }}" style="border-radius: 100px;background-color:#{{ $item->warna_produk }}">
+                {{ $item->nama_produk }}
+              </div>
             </td>
-            <td>Rp. {{ number_format((int)$item->total, 0, ',', '.') }}</td>
+            <td>{{ $item->deskripsi_produk }}</td>
+            <td>Rp. {{ number_format((int)$item->harga, 0, ',', '.') }}</td>
+            <td> {{ number_format((int)$item->stok, 0, ',', '.') }}</td>
             <td><a href="#" class="btn btn-success btn-sm btn-block">Detail</a></td>
           </tr> 
           @endforeach

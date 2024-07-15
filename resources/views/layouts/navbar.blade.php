@@ -7,17 +7,20 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item {{ $title=="Dashboard"?"active":"" }}">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <li class="nav-item  {{ $title=="Pemesanan"?"active":"" }}">
+        <a class="nav-link" href="/pemesanan">Pemesanan</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <li class="nav-item  {{ $title=="Produk"?"active":"" }}">
+        <a class="nav-link" href="/produk">Produk</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+      <li class="nav-item  {{ $title=="Data"?"active":"" }}">
+        <a class="nav-link" href="/data">Data</a>
+      </li>
+      <li class="nav-item  {{ $title=="Pemesan"?"active":"" }}">
+        <a class="nav-link" href="/pemesan">Pemesan</a>
       </li>
     </ul>
   </div>

@@ -14,6 +14,7 @@ class ProdukSeeder extends Seeder
             [
                 'id_produk' => Str::uuid()->toString(),
                 'nama_produk' => 'Produk 1',
+                'warna_produk' => 'FFF8DC',
                 'deskripsi_produk' => 'Deskripsi produk 1',
                 'harga' => 10000,
                 'stok' => 50,
@@ -23,6 +24,7 @@ class ProdukSeeder extends Seeder
             [
                 'id_produk' => Str::uuid()->toString(),
                 'nama_produk' => 'Produk 2',
+                'warna_produk' => '00008B',
                 'deskripsi_produk' => 'Deskripsi produk 2',
                 'harga' => 20000,
                 'stok' => 30,

@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PemesanController;
+use App\Http\Controllers\ProdukController;
+use App\Models\Pemesanan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +25,9 @@ Route::get('/', function () {
 Route::get('/a', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/pemesanan', [PemesananController::class, 'index']);
+Route::get('/produk', [ProdukController::class, 'index']);
+Route::get('/pemesan', [PemesanController::class, 'index']);

@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             [
                 'id_user' => Str::uuid()->toString(),
                 'name' => 'User 1',
+                'nohp' => '0897671283181273',
                 'email' => 'user1@example.com',
                 'password' => Hash::make('password'),
                 'created_at' => now(),
@@ -25,6 +26,7 @@ class UserSeeder extends Seeder
             [
                 'id_user' => Str::uuid()->toString(),
                 'name' => 'User 2',
+                'nohp' => '0897671283181218',
                 'email' => 'user2@example.com',
                 'password' => Hash::make('password'),
                 'created_at' => now(),
