@@ -42,9 +42,10 @@ class PemesanController extends Controller
             $key->total = $details->sum('harga');
         }
 
+        $page = 'pemesan';
         $title = 'Pemesan';
 
-        return view('pemesan', compact('a','title'));
+        return view('pemesan', compact('a','page','title'));
     }
 
     

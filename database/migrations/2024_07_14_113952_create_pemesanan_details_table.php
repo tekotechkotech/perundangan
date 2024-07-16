@@ -13,7 +13,7 @@ return new class extends Migration
             $table->uuid('id_pemesanan');
             $table->uuid('id_produk');
             $table->integer('jumlah');
-            $table->integer('harga');
+            $table->integer('harga_total');
             $table->timestamps();
             $table->softDeletes();
 

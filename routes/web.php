@@ -19,15 +19,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('dashboard'); 
 });
 
-Route::get('/a', function () {
-    return view('welcome');
-});
+// Route::get('/a', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/pemesanan', [PemesananController::class, 'index']);
+Route::get('/pemesanan/{id}', [PemesananController::class, 'pemesananDetail']);
+
 Route::get('/produk', [ProdukController::class, 'index']);
 Route::get('/pemesan', [PemesanController::class, 'index']);

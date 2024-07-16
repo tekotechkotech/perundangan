@@ -27,7 +27,7 @@
             <td>{{ $item->user }}</td>
             <td>
               @foreach ($item->detail as $itu)
-              <span class="badge badge-pill badge-primary">
+              <span class="badge badge-pill text-{{ $itu['text'] }}" style="background-color:#{{ $itu['warna'] }};">
                 {{ $itu['barang'] }} - Qty: {{ $itu['qty'] }}
               </span>
               @endforeach

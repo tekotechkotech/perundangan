@@ -25,9 +25,11 @@ class ProdukController extends Controller
             }
         }
 
+        $page = 'produk';
         $title = 'Produk';
+        
 
-        return view('produk', compact('a','title'));
+        return view('produk', compact('a','page','title'));
     }
 
     function isLightColor($hexColor) {

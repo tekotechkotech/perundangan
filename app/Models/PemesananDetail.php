@@ -21,7 +21,7 @@ class PemesananDetail extends Model
         'id_pemesanan',
         'id_produk',
         'jumlah',
-        'harga'
+        'harga_total'
     ];
 
     protected $casts = [
