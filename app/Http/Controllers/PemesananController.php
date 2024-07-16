@@ -20,7 +20,7 @@ class PemesananController extends Controller
             
             $details = PemesananDetail::where('id_pemesanan', $key->id_pemesanan)
                 ->join('produk', 'pemesanan_detail.id_produk', '=', 'produk.id_produk')
-                ->get(['produk.nama_produk','produk.warna_produk','produk.text_produk', 'pemesanan_detail.jumlah', 'pemesanan_detail.harga']);
+                ->get(['produk.nama_produk','produk.warna_produk','produk.text_produk', 'pemesanan_detail.jumlah', 'pemesanan_detail.harga_total']);
 
             $key->detail = $details->map(function ($item) {
                 return [
