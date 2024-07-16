@@ -33,7 +33,7 @@
               @endforeach
             </td>
             <td>Rp. {{ number_format((int)$item->total, 0, ',', '.') }}</td>
-            <td><a href="#" class="btn btn-success btn-sm btn-block">Detail</a></td>
+            <td><a href="pemesanan/{{ $item->kode_pemesanan }}" class="btn btn-success btn-sm btn-block">Detail</a></td>
           </tr> 
           @endforeach
           

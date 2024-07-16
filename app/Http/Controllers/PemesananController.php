@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use App\Models\Pemesanan;
 use App\Models\PemesananDetail;
 use App\Models\Produk;
@@ -31,7 +32,7 @@ class PemesananController extends Controller
                 ];
             })->toArray();
             
-            $key->total = $details->sum('harga');
+            $key->total = $details->sum('harga_total');
         }
 
         // dd($a);
@@ -56,17 +57,21 @@ class PemesananController extends Controller
         $ada=0;
         foreach ($b as $key) {
             // dd($key);
-            $ada += $key->harga;
+            $ada += $key->harga_total;
         }
+
 
         $a->total_harga = $ada??0;
 
-        // dd($a);
+        
+        $c=Pembayaran::where('id_pemesanan',$a->id_pemesanan)->orderBy('tanggal_pembayaran','asc')->get();
+
+        $a->dibayar = $c->sum('nominal');
 
         $page = 'pemesanan';
         $title = 'Pemesanan Detail';
 
-        return view('pemesanan-detail', compact('a','b','page','title'));
+        return view('pemesanan-detail', compact('a','b','c','page','title'));
 
     }
 }

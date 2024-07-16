@@ -23,7 +23,7 @@ class PemesananDetailSeeder extends Seeder
                 'id_pemesanan' => $pemesanan1->id_pemesanan,
                 'id_produk' => $produk1->id_produk,
                 'jumlah' => 2,
-                'harga_total' => 10000,
+                'harga_total' => 20000,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
