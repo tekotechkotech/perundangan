@@ -26,10 +26,13 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-Route::get('/pemesanan', [PemesananController::class, 'index']);
-Route::get('/pemesanan/{id}', [PemesananController::class, 'pemesananDetail']);
+Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan.index');
+Route::get('/pemesanan/{id}/{apa}', [PemesananController::class, 'pemesananDetail'])->name('pemesanan.detail');
 
-Route::get('/produk', [ProdukController::class, 'index']);
-Route::get('/pemesan', [PemesanController::class, 'index']);
+Route::post('/pembayaran', [PemesananController::class, 'pembayaran'])->name('pembayaran');
+
+
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/pemesan', [PemesanController::class, 'index'])->name('pemesan.index');

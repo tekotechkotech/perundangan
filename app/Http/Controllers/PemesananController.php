@@ -7,7 +7,9 @@ use App\Models\Pemesanan;
 use App\Models\PemesananDetail;
 use App\Models\Produk;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PemesananController extends Controller
 {
@@ -43,7 +45,7 @@ class PemesananController extends Controller
         return view('pemesanan', compact('a','page','title'));
     }
 
-    public function pemesananDetail($id) {
+    public function pemesananDetail($id,$apa) {
         $a = Pemesanan::where('kode_pemesanan',$id)
         ->join('user','pemesanan.id_user','user.id_user')
                 ->first();
@@ -71,7 +73,33 @@ class PemesananController extends Controller
         $page = 'pemesanan';
         $title = 'Pemesanan Detail';
 
-        return view('pemesanan-detail', compact('a','b','c','page','title'));
+        // dd($a);
 
+        return view('pemesanan-detail', compact('a','b','c','page','title','apa'));
+
+    }
+
+    public function pembayaran(Request $request) {
+        // dd('sini');
+        // Validasi data
+        $request->validate([
+            'nominal' => 'required|numeric',
+            'metode_pembayaran' => 'required|string|max:255',
+            'keterangan' => 'nullable|string|max:255',
+        ]);
+
+        // dd($request->id_pemesanan);
+        // Simpan data ke dalam database
+        Pembayaran::create([
+            'id_pembayaran' => Str::uuid()->toString(),
+            'id_pemesanan' => $request->id_pemesanan,
+            'nominal' => (int)$request->nominal,
+            'metode_pembayaran' => $request->metode_pembayaran,
+            'deskripsi' => $request->keterangan,
+            'tanggal_pembayaran' => Carbon::now(),
+        ]);
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Pembayaran berhasil ditambahkan!');
     }
 }
