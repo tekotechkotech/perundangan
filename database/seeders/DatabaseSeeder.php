@@ -23,8 +23,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProdukSeeder::class,
             PemesananSeeder::class,
-            PemesananDetailSeeder::class,
+            DataSeeder::class,
             PembayaranSeeder::class,
+            PemesananDetailSeeder::class,
         ]);
     }
 }

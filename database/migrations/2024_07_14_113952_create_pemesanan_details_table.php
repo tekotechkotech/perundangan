@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('pemesanan_detail', function (Blueprint $table) {
             $table->uuid('id_pemesanan_detail')->primary();
+            $table->uuid('id_data');
             $table->uuid('id_pemesanan');
             $table->uuid('id_produk');
             $table->integer('jumlah');
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('id_data')->references('id_data')->on('data')->onDelete('cascade');
             $table->foreign('id_pemesanan')->references('id_pemesanan')->on('pemesanan')->onDelete('cascade');
             $table->foreign('id_produk')->references('id_produk')->on('produk')->onDelete('cascade');
         });
