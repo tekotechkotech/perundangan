@@ -21,32 +21,31 @@
         </thead>
         <tbody>
           @foreach ($a as $item)
-          <tr>
-            <th scope="row">{{ $item['kode_pemesanan'] }}</th>
-            <td>{{ \Carbon\Carbon::parse($item['tanggal_pemesanan'])->translatedFormat('l, d F Y') }}</td>
-            <td>{{ $item['user'] }}</td>
-            <td>
-              
-      @if (isset($item['data']) && is_array($item['data']) || is_object($item['data']))
+    <tr>
+        <th scope="row">{{ $item['kode_pemesanan'] }}</th>
+        <td>{{ \Carbon\Carbon::parse($item['tanggal_pemesanan'])->translatedFormat('l, d F Y') }}</td>
+        <td>{{ $item['user'] }}</td>
+        <td>
+            @if (isset($item['data']) && (is_array($item['data']) || is_object($item['data'])))
+                @foreach ($item['data'] as $itu)
+                    <span class="badge badge-pill badge-secondary text-light p-2 ">
+                        {{ ucwords($itu['type']) }}
 
-              @foreach ($item['data'] as $itu)
-              <span class="badge badge-pill badge-secondary text-dark">
-                  Data {{ $itu['type'] }}
-                  @if (isset($itu['detail']) && is_array($itu['detail']) || is_object($itu['detail']))
-                  @foreach ($itu['detail'] as $ini)
-                  <span class="badge badge-pill text-{{ $ini['text'] }}" style="background-color:#{{ $ini['warna'] }};">
-                    {{ $ini['barang'] }} - Qty: {{ $ini['qty'] }}
-                  </span>
-                  @endforeach
-                  @endif
-                </span>
-              @endforeach
-              @endif
-            </td>
-            <td>Rp. {{ number_format((int)$item['total'], 0, ',', '.') }}</td>
-            <td><a href="pemesanan/{{ $item['kode_pemesanan'] }}/invoice" class="btn btn-success btn-sm btn-block">Detail</a></td>
-          </tr> 
-          @endforeach
+                        @if (isset($itu['detail']) && (is_array($itu['detail']) || is_object($itu['detail'])))
+                            @foreach ($itu['detail'] as $ini)
+                                <span class="badge badge-pill text-{{ $ini->text_produk }}" style="background-color:#{{ $ini->warna_produk }};">
+                                    {{ $ini->nama_produk }} - Qty: {{ $ini->jumlah }}
+                                </span>
+                            @endforeach
+                        @endif
+                    </span>
+                @endforeach
+            @endif
+        </td>
+        <td>Rp. {{ number_format((int)$item['total'], 0, ',', '.') }}</td>
+        <td><a href="pemesanan/{{ $item['kode_pemesanan'] }}/invoice" class="btn btn-success btn-sm btn-block">Detail</a></td>
+    </tr>
+@endforeach
           
         </tbody>
       </table>
