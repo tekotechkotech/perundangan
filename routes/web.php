@@ -29,6 +29,8 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan.index');
+Route::get('/pemesanan/add{apa}', [PemesananController::class, 'add'])->name('pemesanan.add');
+Route::get('/pemesanan/store', [PemesananController::class, 'store'])->name('pemesanan.store');
 Route::get('/pemesanan/{id}/{apa}', [PemesananController::class, 'pemesananDetail'])->name('pemesanan.detail');
 
 Route::post('/pembayaran', [PemesananController::class, 'pembayaran'])->name('pembayaran');

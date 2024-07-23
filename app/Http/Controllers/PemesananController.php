@@ -36,7 +36,7 @@ class PemesananController extends Controller
 
             // Array untuk menyimpan data detail
             $dataResult = [];
-
+            $total=0;
             // Iterasi melalui setiap data yang terkait dengan pemesanan
             foreach ($dataList as $data) {
                 // Ambil detail yang terkait dengan data
@@ -47,6 +47,8 @@ class PemesananController extends Controller
                     'type' => $data->type,
                     'detail' => $detailList,
                 ];
+
+                $total = $detailList->sum('harga_total');
             }
 
             // Tambahkan pemesanan dengan relasi ke result
@@ -55,12 +57,14 @@ class PemesananController extends Controller
                 'tanggal_pemesanan' => $pemesanan->tanggal_pemesanan,
                 'user' => $user->name,
                 'data' => $dataResult,
-                'total' => $pemesanan->total,
+                'total' => $total,
             ];
         }
 
         $a = $result;
 
+
+        // dd($a);
         $page = 'pemesanan';
         $title = 'Pemesanan';
 
@@ -124,5 +128,14 @@ class PemesananController extends Controller
 
         // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Pembayaran berhasil ditambahkan!');
+    }
+
+    public function add($apa) {
+
+
+        
+        $page = 'pemesanan';
+        $title = 'Tambah Pesanan';
+        return view('pemesanan-tambah',compact('apa','title','page'));
     }
 }

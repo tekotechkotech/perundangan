@@ -4,7 +4,29 @@
 
 @section('content')
     <h2>Pemesanan</h2>
-    <p>This is the pemesanan page.</p>
+    <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <p>This is the pemesanan page.</p>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="dropdown">
+                <a class="btn btn-block btn-sm btn-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Tambah Pesanan
+                </a>
+              
+                <div class="dropdown-menu btn-block">
+                  <a class="dropdown-item" href="/pemesanan/addNikah">Undangan Nikah</a>
+                  <a class="dropdown-item" href="/pemesanan/addKhitan">Undangan Khitan</a>
+                  {{-- <a class="dropdown-item" href="/pemesanan/addYasin">Buku Yasin</a> --}}
+                  {{-- <a class="dropdown-item" href="/pemesanan/addBanner">Banner</a> --}}
+                  {{-- <a class="dropdown-item" href="#">Banner</a> --}}
+                </div>
+              </div>
+
+
+             {{-- <a href="#" class="btn btn-block btn-sm btn-success">Tambah Pesanan</a> --}}
+        </div>
+    </div>
 
 
       <table style="border-radius: 10px" class=" table table-hover border" >
